@@ -65,11 +65,11 @@ public class ControleLogin implements ActionListener, KeyListener {
             
         }else if(e.getSource().equals(this.telaLogin.getBtnEsqueciSenha())) {
             
-            this.tela();
+            this.serviceMudarSenha.acesso();
             
         }else if(e.getSource().equals(this.telaLogin.getBtnCriarConta())) {
             
-            this.telaCadastro();
+            this.serviceCadastro.cadastrar();
             
         }else if(e.getSource().equals(this.telaCadastro.getBtn_cadastrar())){
             
@@ -85,17 +85,6 @@ public class ControleLogin implements ActionListener, KeyListener {
             
         }
         
-    }
-    public void tela(){
-    
-            TelaMudarSenha telaMudarSenha = new TelaMudarSenha(null, true);
-            
-    }
-    
-    public void telaCadastro(){
-
-            TelaCadastro telaCadastro = new TelaCadastro(null, true);
-            
     }
             
     @Override
