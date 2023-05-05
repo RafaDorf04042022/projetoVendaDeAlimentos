@@ -30,15 +30,7 @@ public class ServiceMudarSenha {
     }
     public void acesso(){
         
-         usuario = this.usuarioDAO.acesso(telaMudarSenha.getTxt_confirmaEmail().getText(), telaMudarSenha.getTxt_novaSenha().getText());
-         if(usuario.getId()>0){
-            this.telaMudarSenha.dispose();
-            this.telaLogin = new TelaLogin(null, true);
-
-        } else{
-            JOptionPane.showMessageDialog(telaMudarSenha, "Usuário e/ou senha incorreto(s)","Acesso Negado", 0);
-        }
-         
+            this.telaMudarSenha = new TelaMudarSenha(null, true);
     }
     
     public void mudarSenha(){
