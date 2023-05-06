@@ -53,7 +53,7 @@ public class ServiceLogin {
 //Cadastro   
      public void acessoCadastro(){
         
-            this.telaCadastro = new TelaCadastro(null, true);
+            this.telaCadastro.setVisible(true);
     }
     
     public void cadastrar(){
@@ -62,8 +62,8 @@ public class ServiceLogin {
         this.usuario.setEmail(telaCadastro.getTxt_email().getText());
         this.usuario.setSenha(telaCadastro.getTxt_senha().getText());
         this.usuarioDAO.cadastrar(usuario);
-        this.telaCadastro.dispose();
-        this.telaLogin = new TelaLogin(null, true);
+        this.telaCadastro.setVisible(false);
+        this.telaLogin.setVisible(true);
         
     }
     
@@ -77,15 +77,14 @@ public class ServiceLogin {
     
     public void sair(){
         
-        this.telaCadastro.dispose();
-        this.telaLogin = new TelaLogin(null, true);
+        this.telaCadastro.setVisible(false);
+        this.telaLogin.setVisible(true);
     
     }
 //Mudar Senha
      public void acessoMudarSenha(){
         
             this.telaLogin.setVisible(false);
-            //this.telaMudarSenha = new TelaMudarSenha(null, true);
             this.telaMudarSenha.setVisible(true);
             
     }
