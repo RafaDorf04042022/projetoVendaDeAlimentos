@@ -29,7 +29,7 @@ public class ControlePrincipal implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource().equals(this.telaPrincipal.getMenuItemPerfil())) {
-            ControlePerfil controlePerfil = new ControlePerfil();
+            ControlePerfil controlePerfil = new ControlePerfil(telaPrincipal);
         }
     }
     
