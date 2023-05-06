@@ -4,6 +4,7 @@
  */
 package view;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 
@@ -29,6 +30,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         return MenuItemPerfil;
     }
 
+    public JButton getjButtonSair() {
+        return jButtonSair;
+    }
+
     public void setLblUsuario(JLabel lblUsuario) {
         this.lblUsuario = lblUsuario;
     }
@@ -47,6 +52,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         lblImagem = new javax.swing.JLabel();
         lblLogado = new javax.swing.JLabel();
         lblUsuario = new javax.swing.JLabel();
+        jButtonSair = new javax.swing.JButton();
         MenuBar = new javax.swing.JMenuBar();
         JMenuPerfil = new javax.swing.JMenu();
         MenuItemPerfil = new javax.swing.JMenuItem();
@@ -63,6 +69,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         lblUsuario.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         lblUsuario.setText("USER");
 
+        jButtonSair.setText("Sair");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -72,7 +80,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addComponent(lblLogado)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblUsuario)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 68, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(lblImagem)
                 .addGap(10, 10, 10))
         );
@@ -81,14 +91,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblImagem)
-                        .addGap(10, 10, 10))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblLogado)
-                            .addComponent(lblUsuario))
-                        .addGap(10, 10, 10))))
+                    .addComponent(lblImagem, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblLogado)
+                        .addComponent(lblUsuario)
+                        .addComponent(jButtonSair)))
+                .addGap(8, 8, 8))
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -156,6 +164,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar MenuBar;
     private javax.swing.JMenuItem MenuItemAlimento;
     private javax.swing.JMenuItem MenuItemPerfil;
+    private javax.swing.JButton jButtonSair;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblImagem;
     private javax.swing.JLabel lblLogado;

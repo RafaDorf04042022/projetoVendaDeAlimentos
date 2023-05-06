@@ -31,6 +31,7 @@ public class ControlePrincipal implements ActionListener{
     private void addListeners() {
         this.telaPrincipal.getMenuItemPerfil().addActionListener(this);
         this.telaPrincipal.getMenuItemAlimento().addActionListener(this);
+        this.telaPrincipal.getjButtonSair().addActionListener(this);
     }
     
     @Override
@@ -40,6 +41,8 @@ public class ControlePrincipal implements ActionListener{
         }else if(e.getSource().equals(this.telaPrincipal.getMenuItemAlimento())) {
             this.servicePrincipal.acessoAlimento();
             ControlePerfil controlePerfil = new ControlePerfil(telaPrincipal);
+        }else if(e.getSource().equals(this.telaPrincipal.getjButtonSair())){
+            // função de sair
         }
     }
     
