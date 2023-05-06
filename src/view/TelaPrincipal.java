@@ -29,6 +29,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         return MenuItemPerfil;
     }
 
+    public void setLblUsuario(JLabel lblUsuario) {
+        this.lblUsuario = lblUsuario;
+    }
+
     
     /**
      * This method is called from within the constructor to initialize the form.
