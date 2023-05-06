@@ -19,7 +19,7 @@ public class Conexao {
     public static Connection getConexao() {
         if(conexao == null) {
             try{
-                conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/usuario",
+                conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/banco",
                         "root", "undergroundcoloredviolet453spalov");
             }catch(SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Não foi possível conectar ao banco de dados", "Erro", 0);
