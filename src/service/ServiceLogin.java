@@ -30,8 +30,7 @@ public class ServiceLogin {
         this.telaCadastro = telaCadastro;
         this.telaMudarSenha = telaMudarSenha;
         this.usuarioDAO = new UsuarioDAO();
-        this.usuario = new Usuario();
-        
+        this.usuario = new Usuario();  
     }
 //Login    
     public void acesso(){
@@ -52,7 +51,8 @@ public class ServiceLogin {
 //Cadastro   
      public void acessoCadastro(){
         
-            this.telaCadastro = new TelaCadastro(null, true);
+        this.telaLogin.setVisible(false);
+        this.telaCadastro.setVisible(true);    
     }
     
     public void cadastrar(){
