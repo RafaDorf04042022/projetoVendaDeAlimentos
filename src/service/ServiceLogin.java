@@ -20,7 +20,7 @@ public class ServiceLogin {
     private TelaLogin telaLogin;
     private UsuarioDAO usuarioDAO;
     private Usuario usuario;
-    private ControlePrincipal controlePrincipal;
+
     private TelaCadastro telaCadastro;
     private TelaMudarSenha telaMudarSenha;
 
@@ -31,7 +31,6 @@ public class ServiceLogin {
         this.telaMudarSenha = telaMudarSenha;
         this.usuarioDAO = new UsuarioDAO();
         this.usuario = new Usuario();
-        this.controlePrincipal = controlePrincipal;
         
     }
 //Login    
@@ -42,7 +41,7 @@ public class ServiceLogin {
          if(usuario.getId()>0){
              
             this.telaLogin.dispose();
-            this.controlePrincipal = new ControlePrincipal();
+            ControlePrincipal controlePrincipal = new ControlePrincipal();
             
         } else{
              
