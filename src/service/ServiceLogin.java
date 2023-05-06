@@ -68,9 +68,9 @@ public class ServiceLogin {
     
     public void limparTelaCadastro(){
     
-        this.telaCadastro.getTxt_nome().setText("");
-        this.telaCadastro.getTxt_email().setText("");
-        this.telaCadastro.getTxt_senha().setText("");
+       this.telaCadastro.getTxt_nome().setText("");
+       this.telaCadastro.getTxt_email().setText("");
+       this.telaCadastro.getTxt_senha().setText("");
         
     }
     
