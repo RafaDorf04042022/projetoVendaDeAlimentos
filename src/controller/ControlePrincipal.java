@@ -36,13 +36,10 @@ public class ControlePrincipal implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource().equals(this.telaPrincipal.getMenuItemPerfil())) {
-<<<<<<< HEAD
             this.servicePrincipal.acessoPerfil();
         }else if(e.getSource().equals(this.telaPrincipal.getMenuItemAlimento())) {
             this.servicePrincipal.acessoAlimento();
-=======
             ControlePerfil controlePerfil = new ControlePerfil(telaPrincipal);
->>>>>>> 0ed7fbefe12d8b27d314d88db5af1b20698da5d8
         }
     }
     
