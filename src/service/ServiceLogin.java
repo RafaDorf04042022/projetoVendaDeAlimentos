@@ -61,8 +61,8 @@ public class ServiceLogin {
         this.usuario.setEmail(telaCadastro.getTxt_email().getText());
         this.usuario.setSenha(telaCadastro.getTxt_senha().getText());
         this.usuarioDAO.cadastrar(usuario);
-        this.telaCadastro.dispose();
-        this.telaLogin = new TelaLogin(null, true);
+        this.telaCadastro.setVisible(false);
+        this.telaLogin.setVisible(true);
         
     }
     
@@ -76,15 +76,14 @@ public class ServiceLogin {
     
     public void sair(){
         
-        this.telaCadastro.dispose();
-        this.telaLogin = new TelaLogin(null, true);
+        this.telaCadastro.setVisible(false);
+        this.telaLogin.setVisible(true);
     
     }
 //Mudar Senha
      public void acessoMudarSenha(){
         
             this.telaLogin.setVisible(false);
-            //this.telaMudarSenha = new TelaMudarSenha(null, true);
             this.telaMudarSenha.setVisible(true);
             
     }
