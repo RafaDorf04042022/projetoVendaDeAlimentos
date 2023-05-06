@@ -24,10 +24,6 @@ public class TelaMudarSenha extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
     }
 
-    TelaMudarSenha() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
     public JButton getBtn_concluir() {
         return btn_concluir;
     }
