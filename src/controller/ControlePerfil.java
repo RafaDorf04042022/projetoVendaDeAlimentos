@@ -2,14 +2,18 @@
 package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import service.ServicePerfil;
 import view.TelaPerfil;
 import view.TelaPrincipal;
 
 public class ControlePerfil implements ActionListener{
+    
     private final TelaPerfil telaPerfil;
+    private final ServicePerfil servicePerfil;
 
     public ControlePerfil(TelaPrincipal telaPrincipal) {
         this.telaPerfil = new TelaPerfil(telaPrincipal, true);
+        this.servicePerfil = new ServicePerfil(telaPerfil);
         addListeners();
     }
 
@@ -18,13 +22,13 @@ public class ControlePerfil implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) { //incompleto
         if(e.getSource().equals(telaPerfil.getjButtonEditEmail())){
-            //service para tela de trocar email
+            this.servicePerfil.trocarEmail();
         }
-        if(e.getSource().equals(telaPerfil.getjButtonMudarSenha())){
-            //service para tela de trocar senha
+        else if(e.getSource().equals(telaPerfil.getjButtonMudarSenha())){
+            this.servicePerfil.trocarSenha();
         }
-        if(e.getSource().equals(telaPerfil.getjButtonEditarEndereco())){
-            //service para Tela de endereços
+        else if(e.getSource().equals(telaPerfil.getjButtonEditarEndereco())){
+            this.servicePerfil.trocarEndereco();
         }
     }
 

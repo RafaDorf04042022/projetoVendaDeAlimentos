@@ -14,7 +14,7 @@ import java.sql.SQLException;
  */
 public class UsuarioDAO {
     public int cadastrar(Usuario usuario) {
-        String sql = "INSERT * INTO usuario (nome, email, senha) VALUES (?, ?, ?)";
+        String sql = "INSERT * INTO usuario (nome, email, senha, endereco) VALUES (?, ?, ?, ?)";
         
         PreparedStatement pst;
         ResultSet st;
@@ -25,6 +25,7 @@ public class UsuarioDAO {
             pst.setString(1, usuario.getNomeLogin());
             pst.setString(2, usuario.getEmail());
             pst.setString(3, usuario.getSenha());
+            pst.setString(4, usuario.getEndereco());
             pst.execute();
             st = pst.getGeneratedKeys();
             
@@ -46,7 +47,8 @@ public class UsuarioDAO {
             pst = Conexao.getConexao().prepareStatement(sql);
             pst.setString(1, usuario.getNomeLogin());
             pst.setString(2, usuario.getEmail());
-            pst.setInt(3, usuario.getId());
+            pst.setString(3, usuario.getEndereco());
+            pst.setInt(4, usuario.getId());
             pst.execute();
             pst.close();
             
@@ -135,6 +137,47 @@ public class UsuarioDAO {
             pst = Conexao.getConexao().prepareStatement(sql);
             pst.setString(1, usuario.getSenha());
             pst.setString(2, usuario.getEmail());
+            pst.execute();
+            pst.close();
+        }catch(SQLException ex){
+            System.out.println(ex);
+        }
+    }
+            
+    public void alterarEmail(Usuario usuario) {
+        String sql = "UPDATE usuario SET email LIKE ?";
+        
+        PreparedStatement pst;
+        try{
+            pst = Conexao.getConexao().prepareStatement(sql);
+            pst.setString(1, usuario.getEmail());
+            pst.execute();
+            pst.close();
+        }catch(SQLException ex){
+            System.out.println(ex);
+        }
+    }
+            
+    public void alterarSenhaPerfil(Usuario usuario) {
+        String sql = "UPDATE usuario SET senha = md5(?)";
+        
+        PreparedStatement pst;
+        try{
+            pst = Conexao.getConexao().prepareStatement(sql);
+            pst.setString(1, usuario.getSenha());
+            pst.execute();
+            pst.close();
+        }catch(SQLException ex){
+            System.out.println(ex);
+        }
+    }  
+     public void alterarEndereco(Usuario usuario) {
+        String sql = "UPDATE usuario SET endereco = md5(?)";
+        
+        PreparedStatement pst;
+        try{
+            pst = Conexao.getConexao().prepareStatement(sql);
+            pst.setString(1, usuario.getEndereco());
             pst.execute();
             pst.close();
         }catch(SQLException ex){

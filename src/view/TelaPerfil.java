@@ -40,7 +40,19 @@ public class TelaPerfil extends javax.swing.JDialog { //faltam imagens para icon
     }
 
     public JList<String> getjListEnderecos() {
-        return jListEnderecos;
+        return jListEndereco;
+    }
+
+    public void setjLabelEmail(JLabel jLabelEmail) {
+        this.jLabelEmail = jLabelEmail;
+    }
+
+    public void setjLabelEndereco(JLabel jLabelEndereco) {
+        this.jLabelEndereco = jLabelEndereco;
+    }
+
+    public void setjLabelSenha(JLabel jLabelSenha) {
+        this.jLabelSenha = jLabelSenha;
     }
     
     
@@ -60,11 +72,14 @@ public class TelaPerfil extends javax.swing.JDialog { //faltam imagens para icon
         jLabelTituloEmail = new javax.swing.JLabel();
         jLabelEmail = new javax.swing.JLabel();
         jScrollPaneEnderecos = new javax.swing.JScrollPane();
-        jListEnderecos = new javax.swing.JList<>();
+        jListEndereco = new javax.swing.JList<>();
         jLabelEnderecos = new javax.swing.JLabel();
         jButtonEditEmail = new javax.swing.JButton();
         jButtonMudarSenha = new javax.swing.JButton();
         jButtonEditarEndereco = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabelSenha = new javax.swing.JLabel();
+        jLabelEndereco = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -73,19 +88,19 @@ public class TelaPerfil extends javax.swing.JDialog { //faltam imagens para icon
         jLabelNome.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabelNome.setText("NOME");
 
-        jLabelTituloEmail.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabelTituloEmail.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jLabelTituloEmail.setText("E-Mail:");
 
-        jLabelEmail.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabelEmail.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jLabelEmail.setText("example@email.com");
 
-        jListEnderecos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jListEnderecos.setModel(new javax.swing.AbstractListModel<String>() {
+        jListEndereco.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jListEndereco.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPaneEnderecos.setViewportView(jListEnderecos);
+        jScrollPaneEnderecos.setViewportView(jListEndereco);
 
         jLabelEnderecos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabelEnderecos.setText("Endereços:");
@@ -95,6 +110,13 @@ public class TelaPerfil extends javax.swing.JDialog { //faltam imagens para icon
         jButtonMudarSenha.setText("Mudar senha");
 
         jButtonEditarEndereco.setText("Editar endereço");
+
+        jLabel1.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        jLabel1.setText("senha:");
+
+        jLabelSenha.setText("NOTHERE");
+
+        jLabelEndereco.setText("Casa da Mãe Joana");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -109,17 +131,27 @@ public class TelaPerfil extends javax.swing.JDialog { //faltam imagens para icon
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelNome)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabelTituloEmail)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabelEmail)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonEditEmail))
-                            .addComponent(jButtonMudarSenha)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelTituloEmail)
+                                    .addComponent(jLabel1))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabelEmail)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jButtonEditEmail))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addGap(4, 4, 4)
+                                        .addComponent(jLabelSenha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jButtonMudarSenha))))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabelEnderecos)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonEditarEndereco)))
-                .addContainerGap(87, Short.MAX_VALUE))
+                .addContainerGap(80, Short.MAX_VALUE))
             .addComponent(jScrollPaneEnderecos)
         );
         jPanel1Layout.setVerticalGroup(
@@ -132,18 +164,26 @@ public class TelaPerfil extends javax.swing.JDialog { //faltam imagens para icon
                         .addGap(44, 44, 44)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelEnderecos)
-                            .addComponent(jButtonEditarEndereco)))
+                            .addComponent(jButtonEditarEndereco)
+                            .addComponent(jLabelEndereco)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabelNome)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelTituloEmail)
-                            .addComponent(jLabelEmail)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabelEmail)
+                                        .addComponent(jLabelTituloEmail))
+                                    .addComponent(jButtonEditEmail, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonMudarSenha))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButtonEditEmail)
-                                .addGap(3, 3, 3)))
-                        .addComponent(jButtonMudarSenha)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(39, 39, 39)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabelSenha))))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addComponent(jScrollPaneEnderecos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -200,12 +240,15 @@ public class TelaPerfil extends javax.swing.JDialog { //faltam imagens para icon
     private javax.swing.JButton jButtonEditEmail;
     private javax.swing.JButton jButtonEditarEndereco;
     private javax.swing.JButton jButtonMudarSenha;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelEmail;
+    private javax.swing.JLabel jLabelEndereco;
     private javax.swing.JLabel jLabelEnderecos;
     private javax.swing.JLabel jLabelFoto;
     private javax.swing.JLabel jLabelNome;
+    private javax.swing.JLabel jLabelSenha;
     private javax.swing.JLabel jLabelTituloEmail;
-    private javax.swing.JList<String> jListEnderecos;
+    private javax.swing.JList<String> jListEndereco;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPaneEnderecos;
     // End of variables declaration//GEN-END:variables

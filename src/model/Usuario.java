@@ -12,6 +12,7 @@ public class Usuario {
     private String nomeLogin;
     private String email;
     private String senha;
+    private String endereco;
     private int id;
 
     public String getNomeLogin() {
@@ -37,6 +38,15 @@ public class Usuario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
 
     public int getId() {
         return id;
