@@ -6,6 +6,8 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import service.ServicePrincipal;
+import view.TelaPerfil;
 import view.TelaPrincipal;
 
 /**
@@ -13,10 +15,15 @@ import view.TelaPrincipal;
  * @author Pedro Paz
  */
 public class ControlePrincipal implements ActionListener{
+    
+    private final ServicePrincipal servicePrincipal;
     private final TelaPrincipal telaPrincipal;
+    private final TelaPerfil telaPerfil;
     
     public ControlePrincipal() {
         this.telaPrincipal = new TelaPrincipal();
+        this.telaPerfil = new TelaPerfil(null, true);
+        this.servicePrincipal = new ServicePrincipal(telaPerfil, telaPrincipal);
         addListeners();
         this.telaPrincipal.setVisible(true);
     }
@@ -29,7 +36,9 @@ public class ControlePrincipal implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource().equals(this.telaPrincipal.getMenuItemPerfil())) {
-            ControlePerfil controlePerfil = new ControlePerfil();
+            this.servicePrincipal.acessoPerfil();
+        }else if(e.getSource().equals(this.telaPrincipal.getMenuItemAlimento())) {
+            this.servicePrincipal.acessoAlimento();
         }
     }
     
