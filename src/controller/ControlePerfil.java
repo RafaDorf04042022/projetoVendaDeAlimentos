@@ -2,15 +2,15 @@
 package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JOptionPane;
 import view.TelaPerfil;
+import view.TelaPrincipal;
 
 public class ControlePerfil implements ActionListener{
     private final TelaPerfil telaPerfil;
 
-    public ControlePerfil() {
-        this.telaPerfil = new TelaPerfil(null, true);
-        
+    public ControlePerfil(TelaPrincipal telaPrincipal) {
+        this.telaPerfil = new TelaPerfil(telaPrincipal, true);
+        addListeners();
     }
 
     
@@ -18,12 +18,20 @@ public class ControlePerfil implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) { //incompleto
         if(e.getSource().equals(telaPerfil.getjButtonEditEmail())){
-            JOptionPane.showMessageDialog(telaPerfil, "função de trocar email... ainda n implementado: classe ControlePerfil linha 26");
-        }else if(e.getSource().equals(telaPerfil.getjButtonMudarSenha())){
-            JOptionPane.showMessageDialog(telaPerfil, "função de trocar senha... ainda n implementado: classe ControlePerfil linha 28");
-        }else if(e.getSource().equals(telaPerfil.getjListEnderecos())){
-            JOptionPane.showMessageDialog(telaPerfil, "Tela de endereços... ainda n implementado: classe ControlePerfil linha 30");
+            //service para tela de trocar email
         }
+        if(e.getSource().equals(telaPerfil.getjButtonMudarSenha())){
+            //service para tela de trocar senha
+        }
+        if(e.getSource().equals(telaPerfil.getjButtonEditarEndereco())){
+            //service para Tela de endereços
+        }
+    }
+
+    private void addListeners() {
+        this.telaPerfil.getjButtonEditEmail().addActionListener(this);
+        this.telaPerfil.getjButtonMudarSenha().addActionListener(this);
+        this.telaPerfil.getjButtonEditarEndereco().addActionListener(this);
     }
     
 }

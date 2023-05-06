@@ -23,6 +23,10 @@ public class TelaPerfil extends javax.swing.JDialog { //faltam imagens para icon
         return jButtonEditEmail;
     }
 
+    public JButton getjButtonEditarEndereco() {
+        return jButtonEditarEndereco;
+    }
+    
     public JLabel getjLabelEmail() {
         return jLabelEmail;
     }
@@ -60,6 +64,7 @@ public class TelaPerfil extends javax.swing.JDialog { //faltam imagens para icon
         jLabelEnderecos = new javax.swing.JLabel();
         jButtonEditEmail = new javax.swing.JButton();
         jButtonMudarSenha = new javax.swing.JButton();
+        jButtonEditarEndereco = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -89,13 +94,15 @@ public class TelaPerfil extends javax.swing.JDialog { //faltam imagens para icon
 
         jButtonMudarSenha.setText("Mudar senha");
 
+        jButtonEditarEndereco.setText("Editar endereço");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabelFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -108,7 +115,10 @@ public class TelaPerfil extends javax.swing.JDialog { //faltam imagens para icon
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButtonEditEmail))
                             .addComponent(jButtonMudarSenha)))
-                    .addComponent(jLabelEnderecos))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabelEnderecos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonEditarEndereco)))
                 .addContainerGap(87, Short.MAX_VALUE))
             .addComponent(jScrollPaneEnderecos)
         );
@@ -120,18 +130,18 @@ public class TelaPerfil extends javax.swing.JDialog { //faltam imagens para icon
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabelFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(44, 44, 44)
-                        .addComponent(jLabelEnderecos))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelEnderecos)
+                            .addComponent(jButtonEditarEndereco)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabelNome)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabelTituloEmail)
-                                .addComponent(jLabelEmail))
+                            .addComponent(jLabelTituloEmail)
+                            .addComponent(jLabelEmail)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jButtonEditEmail)
                                 .addGap(3, 3, 3)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonMudarSenha)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPaneEnderecos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -169,6 +179,7 @@ public class TelaPerfil extends javax.swing.JDialog { //faltam imagens para icon
             java.util.logging.Logger.getLogger(TelaPerfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -187,6 +198,7 @@ public class TelaPerfil extends javax.swing.JDialog { //faltam imagens para icon
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonEditEmail;
+    private javax.swing.JButton jButtonEditarEndereco;
     private javax.swing.JButton jButtonMudarSenha;
     private javax.swing.JLabel jLabelEmail;
     private javax.swing.JLabel jLabelEnderecos;
