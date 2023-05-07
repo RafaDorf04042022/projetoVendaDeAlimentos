@@ -17,12 +17,12 @@ import view.TelaMudarSenha;
  * @author rafael
  */
 public class ServiceLogin {
-    private TelaLogin telaLogin;
-    private UsuarioDAO usuarioDAO;
+    private final TelaLogin telaLogin;
+    private final UsuarioDAO usuarioDAO;
     private Usuario usuario;
 
-    private TelaCadastro telaCadastro;
-    private TelaMudarSenha telaMudarSenha;
+    private final TelaCadastro telaCadastro;
+    private final TelaMudarSenha telaMudarSenha;
 
     public ServiceLogin(TelaLogin telaLogin, TelaCadastro telaCadastro, TelaMudarSenha telaMudarSenha) {
         

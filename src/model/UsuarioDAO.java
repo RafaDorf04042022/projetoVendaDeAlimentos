@@ -113,7 +113,7 @@ public class UsuarioDAO {
         
         try{
             pst = Conexao.getConexao().prepareStatement(sql);
-            pst.setString(1, "bd_comidas");
+            pst.setString(1, "banco");
             pst.setString(2, "usuario");
             st = pst.executeQuery();
             

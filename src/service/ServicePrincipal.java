@@ -9,6 +9,7 @@ import java.io.ByteArrayInputStream;
 import javax.swing.JLabel;
 import model.Usuario;
 import model.UsuarioDAO;
+import view.TelaAlimentos;
 import view.TelaPerfil;
 import view.TelaPrincipal;
 
@@ -20,13 +21,15 @@ public class ServicePrincipal {
     
     private final Usuario usuario;
     private final TelaPerfil telaPerfil;
+    private final TelaAlimentos telaAlimentos;
     private final TelaPrincipal telaPrincipal;
 
-    public ServicePrincipal(TelaPerfil telaPerfil, TelaPrincipal telaPrincipal) {
+    public ServicePrincipal(TelaPerfil telaPerfil, TelaPrincipal telaPrincipal, TelaAlimentos telaAlimentos) {
         
         this.usuario = new Usuario();
         this.telaPerfil = telaPerfil;
         this.telaPrincipal = telaPrincipal;
+        this.telaAlimentos = telaAlimentos;
         user();
         
     }
@@ -55,8 +58,7 @@ public class ServicePrincipal {
     }
     
     public void acessoAlimento(){
-    
-        //Falta implementar tela de alimentos
-        
+        this.telaPrincipal.setVisible(false);
+        this.telaAlimentos.setVisible(true);
     }
 }
