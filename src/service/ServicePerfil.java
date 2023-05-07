@@ -50,6 +50,9 @@ public class ServicePerfil {
         this.telaPerfil.setjLabelSenha(fromString(usuario.getSenha()));
     
     }
+    public void lista(){
+    
+    }
     
     JLabel fromString(String str) {
         
