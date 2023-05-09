@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import model.Produto;
 import model.ProdutoDAO;
-import view.TelaAlimentos;
+import view.TelaProduto;
 import view.TelaPrincipal;
 
 /**
@@ -16,12 +16,12 @@ import view.TelaPrincipal;
  * @author Pedro Paz
  */
 public class ServiceProduto {
-    private final TelaAlimentos telaAlimentos;
+    private final TelaProduto telaAlimentos;
     private final Produto produto;
     private final ProdutoDAO produtoDAO;
     private int id;
     
-    public ServiceProduto(TelaAlimentos telaAlimentos) {
+    public ServiceProduto(TelaProduto telaAlimentos) {
         this.telaAlimentos = telaAlimentos;
         this.produto = new Produto();
         this.produtoDAO= new ProdutoDAO();

@@ -7,7 +7,7 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import service.ServicePrincipal;
-import view.TelaAlimentos;
+import view.TelaProduto;
 import view.TelaPerfil;
 import view.TelaPrincipal;
 
@@ -19,13 +19,13 @@ public class ControlePrincipal implements ActionListener{
     
     private final ServicePrincipal servicePrincipal;
     private final TelaPrincipal telaPrincipal;
-    private final TelaAlimentos telaAlimentos;
+    private final TelaProduto telaAlimentos;
     private final TelaPerfil telaPerfil;
     
     public ControlePrincipal() {
         this.telaPrincipal = new TelaPrincipal();
         this.telaPerfil = new TelaPerfil(null, true);
-        this.telaAlimentos = new TelaAlimentos(null, true);
+        this.telaAlimentos = new TelaProduto(null, true);
         this.servicePrincipal = new ServicePrincipal(telaPerfil, telaPrincipal, telaAlimentos);
         addListeners();
         this.telaPrincipal.setVisible(true);

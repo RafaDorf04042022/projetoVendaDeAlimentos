@@ -14,14 +14,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Pedro Paz
  */
-public class TelaAlimentos extends javax.swing.JDialog {
+public class TelaProduto extends javax.swing.JDialog {
 
     /**
-     * Creates new form TelaAlimentos
+     * Creates new form TelaProduto
      */
     private final DefaultTableModel modelo;
     
-    public TelaAlimentos(java.awt.Frame parent, boolean modal) {
+    public TelaProduto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         this.modelo = (DefaultTableModel)tblProdutos.getModel();
@@ -233,20 +233,21 @@ public class TelaAlimentos extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaAlimentos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaAlimentos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaAlimentos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaAlimentos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                TelaAlimentos dialog = new TelaAlimentos(new javax.swing.JFrame(), true);
+                TelaProduto dialog = new TelaProduto(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
