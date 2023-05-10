@@ -126,13 +126,13 @@ public class TelaProduto extends javax.swing.JDialog {
 
         tblProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Nome", "Descrição", "Preço"
+                "Id", "Nome", "Descrição", "Preço"
             }
         ));
         jScrollPane2.setViewportView(tblProdutos);

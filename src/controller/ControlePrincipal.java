@@ -6,9 +6,8 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import service.ServicePrincipal;
-import view.TelaProduto;
-import view.TelaPerfil;
+import model.Sessao;
+import model.Usuario;
 import view.TelaPrincipal;
 
 /**
@@ -17,16 +16,17 @@ import view.TelaPrincipal;
  */
 public class ControlePrincipal implements ActionListener{
     
-    private final ServicePrincipal servicePrincipal;
     private final TelaPrincipal telaPrincipal;
-    private final TelaProduto telaAlimentos;
-    private final TelaPerfil telaPerfil;
     
-    public ControlePrincipal() {
+    public ControlePrincipal(Usuario usuario) {
         this.telaPrincipal = new TelaPrincipal();
-        this.telaPerfil = new TelaPerfil(null, true);
-        this.telaAlimentos = new TelaProduto(null, true);
-        this.servicePrincipal = new ServicePrincipal(telaPerfil, telaPrincipal, telaAlimentos);
+        this.telaPrincipal.getLblUsuario().setText(usuario.getNomeLogin());
+        addListeners();
+        this.telaPrincipal.setVisible(true);
+    }
+    
+        public ControlePrincipal() {
+        this.telaPrincipal = new TelaPrincipal();
         addListeners();
         this.telaPrincipal.setVisible(true);
     }
@@ -40,12 +40,14 @@ public class ControlePrincipal implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource().equals(this.telaPrincipal.getMenuItemPerfil())) {
-            this.servicePrincipal.acessoPerfil();
+            this.telaPrincipal.dispose();
+            ControlePerfil controlePerfil = new ControlePerfil(telaPrincipal);            
         }else if(e.getSource().equals(this.telaPrincipal.getMenuItemAlimento())) {
-            this.servicePrincipal.acessoAlimento();
-            ControlePerfil controlePerfil = new ControlePerfil(telaPrincipal);
+            this.telaPrincipal.dispose();
+            ControleAlimento controleAlimento = new ControleAlimento(telaPrincipal);
         }else if(e.getSource().equals(this.telaPrincipal.getjButtonSair())){
-            // função de sair
+            this.telaPrincipal.dispose();
+            ControleLogin controleLogin = new ControleLogin();
         }
     }
     

@@ -34,9 +34,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         return jButtonSair;
     }
 
-    public void setLblUsuario(JLabel lblUsuario) {
-        this.lblUsuario = lblUsuario;
+    public JLabel getLblUsuario() {
+        return lblUsuario;
     }
+
+    
 
     
     /**

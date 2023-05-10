@@ -11,5 +11,10 @@
             <file>file:/home/rafael/Documentos/GitHub/projetoVendaDeAlimentos/src/view/TelaCadastroEndereco.java</file>
             <file>file:/home/rafael/Documentos/GitHub/projetoVendaDeAlimentos/src/service/ServicePerfil.java</file>
         </group>
+        <group name="LT II">
+            <file>file:/C:/Users/pc/Documents/NetBeansProjects/projetoVendaDeAlimentos/src/main/Main.java</file>
+            <file>file:/C:/Users/pc/Documents/NetBeansProjects/projetoVendaDeAlimentos/src/service/ServiceLogin.java</file>
+            <file>file:/C:/Users/pc/Documents/NetBeansProjects/projetoVendaDeAlimentos/src/model/UsuarioDAO.java</file>
+        </group>
     </open-files>
 </project-private>

@@ -4,6 +4,7 @@
  */
 package service;
 
+import controller.ControlePrincipal;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import model.Produto;
@@ -28,7 +29,7 @@ public class ServiceProduto {
     }
     
     public void listar() {
-        this.produtoDAO.listar();
+        listaDados(this.produtoDAO.listar());
     }
     
     private void listaDados(ArrayList<Produto> listaprodutos) {
@@ -36,6 +37,7 @@ public class ServiceProduto {
         for(int i=0;i<listaprodutos.size();i++) {
             telaAlimentos.adicionaItem(
                 listaprodutos.get(i).getId(),
+                listaprodutos.get(i).getNome(),
                 listaprodutos.get(i).getDescricao(),
                 listaprodutos.get(i).getPreco());
         }
@@ -96,6 +98,6 @@ public class ServiceProduto {
     
     public void voltar() {
         this.telaAlimentos.setVisible(false);
-        TelaPrincipal telaPrincipal = new TelaPrincipal();
+        ControlePrincipal controlePrincipal = new ControlePrincipal();
     }
 }

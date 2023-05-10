@@ -6,6 +6,7 @@ package service;
 
 import controller.ControlePrincipal;
 import javax.swing.JOptionPane;
+import model.Sessao;
 import model.Usuario;
 import model.UsuarioDAO;
 import view.TelaCadastro;
@@ -37,11 +38,10 @@ public class ServiceLogin {
         
         usuario = this.usuarioDAO.acesso(telaLogin.getTxtEmail().getText(), telaLogin.getTxtSenha().getText());
         
-         if(usuario.getId()>0){
-             
+        if(usuario.getId()>0){
+            Sessao.setUsuarioLogado(usuario);
             this.telaLogin.dispose();
-            ControlePrincipal controlePrincipal = new ControlePrincipal();
-            
+            ControlePrincipal controlePrincipal = new ControlePrincipal(usuario);
         } else{
              
             JOptionPane.showMessageDialog(telaLogin, "Usuário e/ou senha incorreto(s)","Acesso Negado", 0);
@@ -89,8 +89,18 @@ public class ServiceLogin {
     }
     
     public void mudarSenha(){
-        this.usuario.setSenha(telaMudarSenha.getTxt_novaSenha().getText());
-        this.usuarioDAO.alterarSenha(usuario);
+        if(telaMudarSenha.getTxt_novaSenha().getText().equals("")) {
+            JOptionPane.showMessageDialog(telaMudarSenha, "Sua senha está vazia","Senha não informada", 0);
+        }else if(telaMudarSenha.getTxt_confirmaEmail().getText().equals("")){
+            JOptionPane.showMessageDialog(telaMudarSenha, "Insira seu e-mail", "Erro no e-mail", 0);
+        }else {
+            this.usuario.setSenha(telaMudarSenha.getTxt_novaSenha().getText());
+            this.usuario.setEmail(telaMudarSenha.getTxt_confirmaEmail().getText());
+            this.usuarioDAO.alterarSenha(usuario);
+            JOptionPane.showMessageDialog(telaMudarSenha, "Sua senha foi alterada!");
+            limparTelaMudarSenha();
+        }
+
     }
     
     public void limparTelaMudarSenha(){

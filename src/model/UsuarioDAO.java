@@ -74,7 +74,7 @@ public class UsuarioDAO {
     }
     
     public Usuario acesso(String email, String senha) {
-        String sql = "SELECT FROM usuario WHERE email = ? AND senha = md5(?)";
+        String sql = "SELECT * FROM usuario WHERE email = ? AND senha = ?";
         Usuario usuario = new Usuario();
         
         PreparedStatement pst;
@@ -130,7 +130,7 @@ public class UsuarioDAO {
     }
         
     public void alterarSenha(Usuario usuario) {
-        String sql = "UPDATE usuario SET senha = md5(?) WHERE email LIKE ?";
+        String sql = "UPDATE usuario SET senha = ? WHERE email LIKE ?";
         
         PreparedStatement pst;
         try{
@@ -145,12 +145,13 @@ public class UsuarioDAO {
     }
             
     public void alterarEmail(Usuario usuario) {
-        String sql = "UPDATE usuario SET email LIKE ?";
+        String sql = "UPDATE usuario SET email LIKE ? WHERE id = ?";
         
         PreparedStatement pst;
         try{
             pst = Conexao.getConexao().prepareStatement(sql);
             pst.setString(1, usuario.getEmail());
+            pst.setInt(2, usuario.getId());
             pst.execute();
             pst.close();
         }catch(SQLException ex){
@@ -159,12 +160,13 @@ public class UsuarioDAO {
     }
             
     public void alterarSenhaPerfil(Usuario usuario) {
-        String sql = "UPDATE usuario SET senha = md5(?)";
+        String sql = "UPDATE usuario SET senha = ? WHERE id = ?";
         
         PreparedStatement pst;
         try{
             pst = Conexao.getConexao().prepareStatement(sql);
             pst.setString(1, usuario.getSenha());
+            pst.setInt(2, usuario.getId());
             pst.execute();
             pst.close();
         }catch(SQLException ex){
@@ -172,12 +174,13 @@ public class UsuarioDAO {
         }
     }  
      public void alterarEndereco(Usuario usuario) {
-        String sql = "UPDATE usuario SET endereco = md5(?)";
+        String sql = "UPDATE usuario SET endereco = ? WHERE id = ?";
         
         PreparedStatement pst;
         try{
             pst = Conexao.getConexao().prepareStatement(sql);
             pst.setString(1, usuario.getEndereco());
+            pst.setInt(2, usuario.getId());
             pst.execute();
             pst.close();
         }catch(SQLException ex){

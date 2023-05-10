@@ -4,6 +4,7 @@
  */
 package service;
 
+import controller.ControlePrincipal;
 import java.beans.XMLDecoder;
 import java.io.ByteArrayInputStream;
 import javax.swing.JLabel;
@@ -11,6 +12,7 @@ import javax.swing.JOptionPane;
 import model.Usuario;
 import model.UsuarioDAO;
 import view.TelaPerfil;
+import view.TelaPrincipal;
 
 /**
  *
@@ -32,7 +34,7 @@ public class ServicePerfil {
     
         this.usuario.setEmail(JOptionPane.showInputDialog(null, "Digite o novo email:"));
         this.usuarioDAO.alterarEmail(usuario);
-        this.telaPerfil.setjLabelEmail(fromString(usuario.getEmail()));
+        this.telaPerfil.getjLabelEmail().setText(usuario.getEmail());
         
     }
     
@@ -40,26 +42,22 @@ public class ServicePerfil {
     
         this.usuario.setEndereco(JOptionPane.showInputDialog(null, "Digite o novo endereço:"));
         this.usuarioDAO.alterarEndereco(usuario);
-        this.telaPerfil.setjLabelEndereco(fromString(usuario.getEndereco()));
+        this.telaPerfil.getjLabelEndereco().setText(usuario.getEndereco());
     
     }
     public void trocarSenha(){
     
         this.usuario.setSenha(JOptionPane.showInputDialog(null, "Digite a nova senha:"));
         this.usuarioDAO.alterarSenhaPerfil(usuario);
-        this.telaPerfil.setjLabelSenha(fromString(usuario.getSenha()));
+        this.telaPerfil.getjLabelSenha().setText(usuario.getSenha());
     
     }
     public void lista(){
     
     }
     
-    JLabel fromString(String str) {
-        
-        XMLDecoder d = new XMLDecoder(new ByteArrayInputStream(str.getBytes()));
-        JLabel label = (JLabel) d.readObject();
-        d.close();
-        return label;
-        
+    public void voltar() {
+        this.telaPerfil.setVisible(false);
+        ControlePrincipal controlePrincipal = new ControlePrincipal();
     }
 }

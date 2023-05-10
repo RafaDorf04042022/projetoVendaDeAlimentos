@@ -22,6 +22,7 @@ public class ControleAlimento implements ActionListener{
         telaAlimentos = new TelaProduto(telaPrincipal, true);
         serviceAlimento = new ServiceProduto(telaAlimentos);
         addListeners();
+        this.serviceAlimento.listar();
         telaAlimentos.setVisible(true);
     }
     
@@ -36,10 +37,13 @@ public class ControleAlimento implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if(e.getSource().equals(this.telaAlimentos.getBtnNovo())) {
             serviceAlimento.salvar();
+            serviceAlimento.listar();
         }else if(e.getSource().equals(this.telaAlimentos.getBtnEditar())) {
             serviceAlimento.editar();
+            serviceAlimento.listar();
         }else if(e.getSource().equals(this.telaAlimentos.getBtnExcluir())) {
             serviceAlimento.excluir();
+            serviceAlimento.listar();
         }else if(e.getSource().equals(this.telaAlimentos.getBtnVoltar())) {
             serviceAlimento.voltar();
         }
