@@ -14,7 +14,7 @@ import java.sql.SQLException;
  */
 public class UsuarioDAO {
     public int cadastrar(Usuario usuario) {
-        String sql = "INSERT * INTO usuario (nome, email, senha, endereco) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO usuario (nome, email, senha, endereco) VALUES (?, ?, ?, ?)";
         
         PreparedStatement pst;
         ResultSet st;
@@ -74,7 +74,7 @@ public class UsuarioDAO {
     }
     
     public Usuario acesso(String email, String senha) {
-        String sql = "SELECT * FROM usuario WHERE login = ? AND senha = md5(?)";
+        String sql = "SELECT FROM usuario WHERE email = ? AND senha = md5(?)";
         Usuario usuario = new Usuario();
         
         PreparedStatement pst;
