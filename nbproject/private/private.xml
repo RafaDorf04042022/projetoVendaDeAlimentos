@@ -7,6 +7,9 @@
             <file>file:/C:/Users/pc/Documents/NetBeansProjects/projetoVendaDeAlimentos/src/service/ServiceLogin.java</file>
             <file>file:/C:/Users/pc/Documents/NetBeansProjects/projetoVendaDeAlimentos/src/model/UsuarioDAO.java</file>
         </group>
-        <group/>
+        <group>
+            <file>file:/home/rafael/Documentos/GitHub/projetoVendaDeAlimentos/src/service/ServicePrincipal.java</file>
+            <file>file:/home/rafael/Documentos/GitHub/projetoVendaDeAlimentos/src/view/TelaPrincipal.java</file>
+        </group>
     </open-files>
 </project-private>

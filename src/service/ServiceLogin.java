@@ -4,116 +4,102 @@
  */
 package service;
 
-import controller.ControlePrincipal;
-import javax.swing.JOptionPane;
-import model.Sessao;
-import model.Usuario;
-import model.UsuarioDAO;
-import view.TelaCadastro;
-import view.TelaLogin;
-import view.TelaMudarSenha;
+import java.util.Properties;
+import javax.mail.Address;
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import model.DAO.UsuarioDAO;
+import model.database.ConnectionFactory;
+import model.database.DatabaseMySQL;
+import model.domain.Usuario;
+import model.util.Sessao;
 
 /**
  *
- * @author rafael
+ * @author Pedro Paz
  */
 public class ServiceLogin {
-    private final TelaLogin telaLogin;
-    private final UsuarioDAO usuarioDAO;
+    
+    private final UsuarioDAO usuarioDAO = new UsuarioDAO();
     private Usuario usuario;
-
-    private final TelaCadastro telaCadastro;
-    private final TelaMudarSenha telaMudarSenha;
-
-    public ServiceLogin(TelaLogin telaLogin, TelaCadastro telaCadastro, TelaMudarSenha telaMudarSenha) {
-        
-        this.telaLogin = telaLogin;
-        this.telaCadastro = telaCadastro;
-        this.telaMudarSenha = telaMudarSenha;
-        this.usuarioDAO = new UsuarioDAO();
-        this.usuario = new Usuario();  
+    
+    public void createConexao() {
+        ConnectionFactory.createDatabase(new DatabaseMySQL());
     }
-//Login    
-    public void acesso(){
+    
+    public boolean checkAccess(String email, String senha) {
+        return(usuarioDAO.acesso(email, senha).getId()>0);
+    }
+    
+    public boolean checkUsuarioporNome(String nome) {
+        usuario = usuarioDAO.pesquisarNome(nome);
+        return usuario.getNomeLogin().equals(nome);
+    }
+    
+    public boolean checkUsuarioporEmail(String email) {
+        usuario = usuarioDAO.pesquisarporEmail(email);
+        return usuario.getEmail().equals(email);
+    }
+    
+    public void alterarSenha(String email) {
+        usuario = usuarioDAO.pesquisarporEmail(email);
+        usuarioDAO.alterarSenha(usuario);
+    }
+    
+    public void enviarEmail(String novasenha) {
+        Sessao.setUsuarioLogado(usuario.getEmail());
+        usuario.setSenha(novasenha);
+        gerarEmail();
+    }
+    
+    private void gerarEmail() {
         
-        usuario = this.usuarioDAO.acesso(telaLogin.getTxtEmail().getText(), telaLogin.getTxtSenha().getText());
+        Properties prop = new Properties();
+        prop.put("mail.smtp.host", "smtp.gmail.com");
+        prop.put("mail.smtp.socketFactory.port", "465");
+        prop.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+        prop.put("mail.smtp.auth", "true");
+        prop.put("mail.smtp.port", "465");
         
-        if(usuario.getId()>0){
-            Sessao.setUsuarioLogado(usuario);
-            this.telaLogin.dispose();
-            ControlePrincipal controlePrincipal = new ControlePrincipal(usuario);
-        } else{
-             
-            JOptionPane.showMessageDialog(telaLogin, "Usuário e/ou senha incorreto(s)","Acesso Negado", 0);
+        Session sessao = Session.getDefaultInstance(prop,
+                new Authenticator() {
+                    @Override
+                    protected PasswordAuthentication getPasswordAuthentication(){
+                        return new PasswordAuthentication("seuemail@gmail.com", "suasenha");
+                    }    
+                });
+        
+        sessao.setDebug(true);
+        
+        try{
+            Message msg = new MimeMessage(sessao);
+            msg.setFrom(new InternetAddress("seuemail@gmail.com"));
             
-        }
-    }
-//Cadastro   
-     public void acessoCadastro(){
-        
-        this.telaLogin.setVisible(false);
-        this.telaCadastro.setVisible(true);    
-    }
-    
-    public void cadastrar(){
-    
-        this.usuario.setNomeLogin(telaCadastro.getTxt_nome().getText());
-        this.usuario.setEmail(telaCadastro.getTxt_email().getText());
-        this.usuario.setSenha(telaCadastro.getTxt_senha().getText());
-        this.usuarioDAO.cadastrar(usuario);
-        this.telaCadastro.setVisible(false);
-        this.telaLogin.setVisible(true);
-        
-    }
-    
-    public void limparTelaCadastro(){
-    
-       this.telaCadastro.getTxt_nome().setText("");
-       this.telaCadastro.getTxt_email().setText("");
-       this.telaCadastro.getTxt_senha().setText("");
-        
-    }
-    
-    public void sair(){
-        
-        this.telaCadastro.setVisible(false);
-        this.telaLogin.setVisible(true);
-    
-    }
-//Mudar Senha
-     public void acessoMudarSenha(){
-        
-            this.telaLogin.setVisible(false);
-            this.telaMudarSenha.setVisible(true);
+            Address[] toUSer = InternetAddress.parse(this.usuario.getEmail());
             
-    }
-    
-    public void mudarSenha(){
-        if(telaMudarSenha.getTxt_novaSenha().getText().equals("")) {
-            JOptionPane.showMessageDialog(telaMudarSenha, "Sua senha está vazia","Senha não informada", 0);
-        }else if(telaMudarSenha.getTxt_confirmaEmail().getText().equals("")){
-            JOptionPane.showMessageDialog(telaMudarSenha, "Insira seu e-mail", "Erro no e-mail", 0);
-        }else {
-            this.usuario.setSenha(telaMudarSenha.getTxt_novaSenha().getText());
-            this.usuario.setEmail(telaMudarSenha.getTxt_confirmaEmail().getText());
-            this.usuarioDAO.alterarSenha(usuario);
-            JOptionPane.showMessageDialog(telaMudarSenha, "Sua senha foi alterada!");
-            limparTelaMudarSenha();
+            msg.setRecipients(Message.RecipientType.TO, toUSer);
+            msg.setSubject("Recuperação de Senha - Sistema");
+            msg.setText("Seu código de recuperação: " + this.gerarCodigoRecuperacao());
+            
+            Transport.send(msg);
+            
+            System.out.println("Código de recuperação enviado para seu e-mail!");
+            
+        } catch(MessagingException e){
+            throw new RuntimeException(e);
         }
-
-    }
-    
-    public void limparTelaMudarSenha(){
-    
-        this.telaMudarSenha.getTxt_confirmaEmail().setText("");
-        this.telaMudarSenha.getTxt_novaSenha().setText("");
         
     }
     
-    public void voltar(){
-    
-        this.telaMudarSenha.setVisible(false);
-        this.telaLogin.setVisible(true);
-        
+    private int gerarCodigoRecuperacao() {
+        int codigoRecuperacao = (int) (Math.random() * 1000000);
+        Sessao.setCodigoRecuperacao(codigoRecuperacao);
+        return codigoRecuperacao;
     }
 }

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<fx:root id="AnchorPane" prefHeight="412.0" prefWidth="605.0" type="AnchorPane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TelaLoginController">
+   <children>
+      <ImageView fx:id="img_LogoTD" fitHeight="210.0" fitWidth="227.0" layoutX="347.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/Logo_TD.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="373.0" layoutY="208.0" prefHeight="41.0" prefWidth="162.0" text=" Turbo Delivery" textAlignment="CENTER">
+         <font>
+            <Font name="Berlin Sans FB" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="39.0" layoutY="55.0" prefHeight="35.0" prefWidth="260.0" text="Bem Vindo(a) de volta!">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="38.0" layoutY="99.0" prefHeight="17.0" prefWidth="43.0" text="Email">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="39.0" layoutY="163.0" text="Senha">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="txt_senha" layoutX="39.0" layoutY="193.0" prefHeight="25.0" prefWidth="193.0" />
+      <TextField fx:id="txt_email" layoutX="39.0" layoutY="126.0" prefHeight="25.0" prefWidth="193.0" />
+      <Button fx:id="btm_entrar" layoutX="106.0" layoutY="234.0" mnemonicParsing="false" onAction="#btnEntrar" text="Entrar">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Label layoutX="369.0" layoutY="302.0" prefHeight="17.0" prefWidth="171.0" text="Ainda não possui uma conta?" />
+      <Button fx:id="btn_cadastre" layoutX="415.0" layoutY="319.0" mnemonicParsing="false" onAction="#btnCadastrar" text="Cadastre-se" />
+      <Button fx:id="btn_redefinir" layoutX="104.0" layoutY="319.0" mnemonicParsing="false" onAction="#btnMudarSenha" text="Redefinir" />
+      <Label layoutX="74.0" layoutY="302.0" text="Esqueceu a sua senha ?" />
+      <ToolBar prefHeight="25.0" prefWidth="616.0" style="-fx-background-color: A4003D;">
+        <items>
+          <Button fx:id="btn_sair" mnemonicParsing="false" onAction="#btnSair" text="Sair" />
+            <Button fx:id="btn_limpar" mnemonicParsing="false" onAction="#btnLimpar" text="Limpar " />
+        </items>
+      </ToolBar>
+   </children>
+</fx:root>
