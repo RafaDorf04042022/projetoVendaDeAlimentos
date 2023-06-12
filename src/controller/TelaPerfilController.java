@@ -13,27 +13,29 @@ import javafx.fxml.Initializable;
  *
  * @author Heber
  */
-public class TelaCadastroController implements Initializable {
+public class TelaPerfilController implements Initializable {
 
     /**
      * Initializes the controller class.
      * 
      * Nomes //IMPORTANTE
      * Botôes:
-     *  Cadastro: telaCadastroButtonCadastrar
-     *      Ação: telaCadastroButtonCadastrarAction
+     *  Mudar email: telaPerfilButtonMudarEmail
+     *      Ação: telaCadastroButtonMudarEmailAction
      *  
-     *  Limpar: telaCadastroButtonLimpar
-     *      Ação: telaCadastroButtonLimparAction
+     *  mudar senha: telaPerfilButtonMudarSenha
+     *      Ação: telaPerfilButtonMudarSenhaAction
      *  
-     *  Sair: telaCadastroButtonSair
-     *      Ação: telaCadastroButtonSairAction
+     *  Editar endereço: telaPerfilButtonEditarEndereco
+     *      Ação: telaPerfilButtonEditarEnderecoAction
      * 
-     * Textos
-     *  campo de senha: telaCadastroPasswordFieldSenha
-     *  campo de confirmar senha: telaCadastroPasswordFieldConfirma
-     *  email: telaCadastroTextFieldEmail
-     *  Nome: telaCadastroTextFieldNome
+     * Labels:
+     *  nome: telaPerfilLabelNome
+     *  email: telaPerfilLabelEmail
+     * 
+     * outros:
+     *  lista de endereços: telaPerfilListViewEndereços
+     *  foto perfil: telaPerfilImageViewPerfil
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {

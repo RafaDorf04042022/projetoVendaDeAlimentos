@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="424.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/20.0.1" fx:controller="controller.TelaPerfilController">
+   <children>
+      <Pane prefHeight="400.0" prefWidth="426.0">
+         <children>
+            <ImageView fx:id="telaPerfilImageViewPerfil" fitHeight="200.0" fitWidth="200.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="telaPerfilLabelNome" layoutX="200.0" layoutY="14.0" text="NOME">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="200.0" layoutY="80.0" text="E-mail:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="telaPerfilLabelEmail" layoutX="255.0" layoutY="80.0" text="example@email.com">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="22.0" layoutY="207.0" text="Endereços" />
+            <ListView fx:id="telaPerfilListViewEndereços" layoutX="14.0" layoutY="224.0" prefHeight="176.0" prefWidth="401.0" />
+            <Button fx:id="telaPerfilButtonMudarEmail" layoutX="331.0" layoutY="116.0" mnemonicParsing="false" text="Mudar e-mail" />
+            <Button fx:id="telaPerfilButtonMudarSenha" layoutX="200.0" layoutY="116.0" mnemonicParsing="false" onAction="#telaPerfilButtonMudarSenhaAction" text="Mudar Senha" />
+            <Button fx:id="telaPerfilButtonEditarEndereco" layoutX="319.0" layoutY="195.0" mnemonicParsing="false" onAction="#telaPerfilButtonEditarEnderecoAction" text="Editar endereço" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
